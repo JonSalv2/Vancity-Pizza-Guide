@@ -1,0 +1,29 @@
+.search-form {
+    display: grid;
+    gap: 1rem;
+    max-width: 700px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.results-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.result-card {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #fff;
+}

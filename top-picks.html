@@ -6,6 +6,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Top Picks | Vancity Pizza Guide</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="js/pizza-data.js" defer></script>
+        <script src="js/search.js" defer></script>
     </head>
 
     <body>
@@ -24,6 +27,40 @@
         </nav>
 
         <main>
+            <section class="hero">
+                <h2>Search Pizza Places</h2>
+                <p>Browse Vancouver pizza spots by keyword or pizza style.</p>
+            </section>
+
+            <section class="search-section">
+                <h2>Find a Pizza Place</h2>
+
+                <h2>Filter by Style</h2>
+
+                <form id="filter-form" class="search-form">
+                    <div class="form-row">
+                        <label for="style-filter">Choose a pizza style</label>
+                        <select id="style-filter" name="style">
+                            <option value="all">All Styles</option>
+                            <option value="Neapolitan">Neapolitan</option>
+                            <option value="New York">New York</option>
+                            <option value="By the Slice">By the Slice</option>
+                            <option value="Modern">Modern</option>
+                            <option value="Taglio">Taglio</option>
+                        </select>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" id="reset-button">Show All</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="results-section">
+                <h2>Results</h2>
+                <p id="results-message">Showing all pizza places.</p>
+                <div id="results-container" class="results-grid"></div>
+            </section>
             
         </main>
 
