@@ -1,8 +1,230 @@
 /* ==================== Base layout ==================== */
+:root {
+    --deep-brick: #7a1f1f;
+    --burnt-clay: #a34a2f;
+    --dark-wood: #3b2a1f;
+    --parchment: #f3e8d7;
+    --olive-accent: #5b6a3c;
+    --soft-charcoal: #2b2b2b;
+    --button-shadow: rgba(34, 22, 15, 0.55);
+    --page-gutter: clamp(1rem, 3vw, 2rem);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #ead9c0;
+    color: var(--soft-charcoal);
+    font-family: "Trebuchet MS", Verdana, sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: var(--deep-brick);
+}
+
+main {
+    flex: 1 0 auto;
+    padding: 2rem var(--page-gutter) 4rem;
+    background: linear-gradient(180deg, #ead9c0 0%, var(--parchment) 18%, #fbf6ef 100%);
+}
 
 
+/* ==================== Hero ==================== */
+
+.hero {
+    position: relative;
+    margin: -2rem calc(var(--page-gutter) * -1) 2.75rem;
+    min-height: clamp(320px, 38vw, 520px);
+    padding: clamp(5rem, 9vw, 8rem) var(--page-gutter);
+    display: grid;
+    place-items: center;
+    text-align: center;
+    overflow: hidden;
+    background-image:
+        linear-gradient(rgba(25, 18, 13, 0.55), rgba(59, 42, 31, 0.42)),
+        url("../images/vancouver-pizza-banner-blend.jpg");
+    background-position: center;
+    background-size: cover;
+    box-shadow:
+        inset 0 16px 36px rgba(0, 0, 0, 0.16),
+        inset 0 -22px 44px rgba(0, 0, 0, 0.32);
+    color: var(--parchment);
+}
+
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+.hero::before {
+    background:
+        radial-gradient(circle at center, rgba(163, 74, 47, 0.22) 0%, rgba(163, 74, 47, 0) 58%),
+        linear-gradient(90deg, rgba(243, 232, 215, 0.15) 0%, rgba(243, 232, 215, 0) 38%, rgba(43, 27, 21, 0.22) 100%);
+}
+
+.hero::after {
+    inset: auto 0 0;
+    height: clamp(80px, 12vw, 140px);
+    background: linear-gradient(180deg, rgba(243, 232, 215, 0) 0%, rgba(234, 217, 192, 0.82) 62%, rgba(243, 232, 215, 1) 100%);
+}
+
+.hero > * {
+    position: relative;
+    z-index: 1;
+    max-width: 42rem;
+}
+
+.hero h2 {
+    margin: 0;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: clamp(2.5rem, 5vw, 4.75rem);
+    line-height: 1.05;
+    letter-spacing: 0.04em;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    margin: 1rem auto 0;
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: rgba(255, 249, 240, 0.96);
+    text-shadow: 0 3px 14px rgba(0, 0, 0, 0.45);
+}
 
 
+/* ==================== Header ==================== */
+
+.site-header {
+    background-image:
+        linear-gradient(rgba(43, 27, 21, 0.36), rgba(43, 27, 21, 0.52)),
+        url("../images/wood-texture.jpg");
+    background-position: center;
+    background-size: cover;
+    border-bottom: 4px solid var(--burnt-clay);
+    box-shadow: 0 12px 28px rgba(59, 42, 31, 0.2);
+}
+
+.site-header__inner {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.site-title {
+    margin: 0;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: clamp(1.9rem, 3vw, 2.75rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+}
+
+.site-title a {
+    color: var(--parchment);
+    text-decoration: none;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+.site-title a:hover,
+.site-title a:focus-visible {
+    color: #fff9ef;
+}
+
+/* ==================== Nav Bar ==================== */
+
+.site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.7rem;
+}
+
+.site-nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 6.6rem;
+    padding: 0.7rem 1rem;
+    border: 2px solid var(--dark-wood);
+    border-radius: 999px;
+    background: linear-gradient(180deg, #f8f0e5 0%, #e2cfb7 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.55),
+        0 4px 0 var(--button-shadow);
+    color: var(--dark-wood);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+        transform 160ms ease,
+        box-shadow 160ms ease,
+        background 160ms ease,
+        color 160ms ease;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+    background: linear-gradient(180deg, #bc6646 0%, var(--burnt-clay) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 4px 0 var(--button-shadow);
+    color: var(--parchment);
+}
+
+.site-nav a:active,
+.site-nav a.is-current {
+    background: linear-gradient(180deg, #952c23 0%, var(--deep-brick) 100%);
+    box-shadow:
+        inset 0 3px 8px rgba(0, 0, 0, 0.24),
+        0 1px 0 var(--button-shadow);
+    color: var(--parchment);
+    transform: translateY(3px);
+}
+
+.site-nav a:focus-visible,
+.site-title a:focus-visible {
+    outline: 3px solid var(--olive-accent);
+    outline-offset: 3px;
+}
+
+/* ==================== Footer ==================== */
+footer {
+    padding: 1rem 1.5rem;
+    text-align: center;
+    background-image:
+        linear-gradient(rgba(43, 27, 21, 0.36), rgba(43, 27, 21, 0.52)),
+        url("../images/wood-texture.jpg");
+    background-position: center;
+    background-size: cover;
+    border-top: 4px solid var(--burnt-clay);
+    color: var(--parchment);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+footer p {
+    margin: 0;
+}
 
 /* ==================== Home Page ==================== */
 
@@ -170,7 +392,7 @@
 .timeline-image img {
   display: block;
   width: 100%;
-  height: 340px;
+  height: 325px;
   object-fit: cover;
 }
 
