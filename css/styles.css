@@ -372,8 +372,8 @@ footer p {
 }
 
 .footer-social-link--instagram {
-  background: #e4405f;
-  border-color: #f09433;
+  background: var(--deep-brick);
+  border-color: var(--parchment);
 }
 
 .footer-social-link--instagram:hover,
@@ -383,8 +383,8 @@ footer p {
 }
 
 .footer-social-link--tiktok {
-  background: #010101;
-  border-color: #69c9d0;
+  background: var(--burnt-clay);
+  border-color: var(--parchment);
 }
 
 .footer-social-link--tiktok:hover,
@@ -394,8 +394,8 @@ footer p {
 }
 
 .footer-social-link--facebook {
-  background: #1877f2;
-  border-color: #7fb2ff;
+  background: var(--olive-accent);
+  border-color: var(--parchment);
 }
 
 .footer-social-link--facebook:hover,
@@ -810,8 +810,9 @@ footer p {
 
 .timeline-image {
   position: relative;
+  aspect-ratio: 16 / 10;
   min-height: 0;
-  background: #000000;
+  background-color: var(--olive-accent);
   overflow: visible;
   box-shadow: 0 10px 24px rgba(59, 42, 31, 0.12);
 }
@@ -833,8 +834,9 @@ footer p {
 .timeline-image img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: contain;
+  object-position: center;
 }
 
 .timeline-content h3 {
@@ -961,10 +963,11 @@ footer p {
   .history-quote {
     padding: 1.2rem 1rem;
   }
-
 }
 
 @media (max-width: 413px) {
+
+  /* history timeline*/
   .timeline-list::before,
   .timeline-image::before {
     content: none;
@@ -973,6 +976,16 @@ footer p {
   .timeline-item {
     padding-left: 0;
   }
+
+  .timeline-image img {
+    object-fit: fill;
+  }
+
+  /* footer */
+  .footer-social-link {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 /* Tablet layout: 768px minimum width */
@@ -1070,6 +1083,7 @@ footer p {
   }
 
   .timeline-image {
+    aspect-ratio: auto;
     min-height: 250px;
     overflow: hidden;
   }
@@ -1080,7 +1094,8 @@ footer p {
 
   .timeline-image img {
     height: 350px;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center;
   }
 
   /* odd rows: text left, image right */
@@ -1128,4 +1143,5 @@ footer p {
     min-width: 6.6rem;
     padding: 0.75rem 1.1rem;
   }
+
 }
