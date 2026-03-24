@@ -142,6 +142,7 @@ main > section:not(.hero) > h2 {
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
+    flex-wrap: wrap;
 }
 
 .site-title {
@@ -164,20 +165,67 @@ main > section:not(.hero) > h2 {
     color: #fff9ef;
 }
 
+
 /* ==================== Nav Bar ==================== */
 
+.menu-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    padding: 0.8rem;
+    border: 2px solid var(--parchment);
+    border-radius: 50%;
+    background: var(--burnt-clay);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.55),
+        0 4px 0 var(--button-shadow);
+    cursor: pointer;
+    transition:
+        transform 160ms ease,
+        box-shadow 160ms ease,
+        background 160ms ease;
+}
+
+.menu-toggle img {
+    display: block;
+    max-width: 3.2rem;
+}
+
+/* .menu-toggle:hover,
+.menu-toggle:focus-visible,
+.site-header.nav-open .menu-toggle {
+    background: linear-gradient(180deg, #bc6646 0%, var(--burnt-clay) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.2),
+        0 4px 0 var(--button-shadow);
+    transform: translateY(-1px);
+} */
+
+.menu-toggle:active {
+    transform: translateY(3px);
+    box-shadow:
+        inset 0 3px 8px rgba(0, 0, 0, 0.24),
+        0 1px 0 var(--button-shadow);
+}
+
+
+
 .site-nav {
+    width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+    flex-direction: column;
+    align-items: stretch;
     gap: 0.7rem;
 }
 
 .site-nav a {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 6.6rem;
+    width: 100%;
+    min-width: 0;
     padding: 0.7rem 1rem;
     border: 2px solid var(--dark-wood);
     border-radius: 999px;
@@ -218,9 +266,34 @@ main > section:not(.hero) > h2 {
 }
 
 .site-nav a:focus-visible,
-.site-title a:focus-visible {
+.site-title a:focus-visible,
+.menu-toggle:focus-visible {
     outline: 3px solid var(--olive-accent);
     outline-offset: 3px;
+}
+
+.site-header__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+}
+
+.site-title {
+    min-width: 0;
+}
+
+.site-header.nav-ready .menu-toggle {
+    display: inline-flex;
+    justify-self: end;
+}
+
+.site-header.nav-ready .site-nav {
+    display: none;
+    grid-column: 1 / -1;
+}
+
+.site-header.nav-ready.nav-open .site-nav {
+    display: flex;
 }
 
 /* ==================== Footer ==================== */
@@ -778,3 +851,76 @@ footer p {
 }
 
 /* ==================== Lorem Page ==================== */
+
+/* ==================== Media Queries ==================== */
+
+/* Small mobile layout: 300px maximum width */
+@media (max-width: 320px) {
+
+    /**/
+    .site-title {
+        width: min-content;
+    }
+
+    .site-title a {
+        display: block;
+        line-height: 1;
+    }
+}
+
+/* Tablet layout: 768px minimum width */
+@media (min-width: 768px) {
+    .site-header__inner {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .site-header.nav-ready .menu-toggle,
+    .menu-toggle {
+        display: none;
+    }
+
+    .site-header.nav-ready .site-nav,
+    .site-header.nav-ready.nav-open .site-nav,
+    .site-nav {
+        width: 22rem;
+        margin-left: auto;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: stretch;
+    }
+
+    .site-nav a {
+        width: 100%;
+        min-width: 0;
+    }
+}
+
+/* Desktop layout: 1024px minimum width */
+@media (min-width: 1024px) {
+    .site-header__inner {
+        padding: 1rem 2rem;
+    }
+}
+
+/* Wide desktop layout: 1087px minimum width */
+@media (min-width: 1087px) {
+    .site-header.nav-ready .site-nav,
+    .site-header.nav-ready.nav-open .site-nav,
+    .site-nav {
+        width: auto;
+        margin-left: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 0.9rem;
+    }
+
+    .site-nav a {
+        width: auto;
+        min-width: 6.6rem;
+        padding: 0.75rem 1.1rem;
+    }
+}
