@@ -42,35 +42,37 @@
                 <p>Browse Vancouver pizza spots by pizza style.</p>
             </section>
 
-            <section class="search-section">
-                <h2>Find the slice you're looking for</h2>
+            <div class="page-content">
+                <section class="search-section">
+                    <h2>Find the slice you're looking for</h2>
 
-                <h3>Filter by Style</h3>
+                    <h3>Filter by Style</h3>
 
-                <form id="filter-form" class="search-form">
-                    <div class="form-row">
-                        <label for="style-filter">Choose a pizza style</label>
-                        <select id="style-filter" name="style">
-                            <option value="all">All Styles</option>
-                            <option value="Neapolitan">Neapolitan</option>
-                            <option value="New York">New York</option>
-                            <option value="By the Slice">By the Slice</option>
-                            <option value="Modern">Modern</option>
-                            <option value="Taglio">Taglio</option>
-                        </select>
-                    </div>
+                    <form id="filter-form" class="search-form">
+                        <div class="form-row">
+                            <label for="style-filter">Choose a pizza style</label>
+                            <select id="style-filter" name="style">
+                                <option value="all">All Styles</option>
+                                <option value="Neapolitan">Neapolitan</option>
+                                <option value="New York">New York</option>
+                                <option value="By the Slice">By the Slice</option>
+                                <option value="Modern">Modern</option>
+                                <option value="Taglio">Taglio</option>
+                            </select>
+                        </div>
 
-                    <div class="form-buttons">
-                        <button type="button" id="reset-button">Show All</button>
-                    </div>
-                </form>
-            </section>
+                        <div class="form-buttons">
+                            <button type="button" id="reset-button">Show All</button>
+                        </div>
+                    </form>
+                </section>
 
-            <section class="results-section">
-                <h2>Results</h2>
-                <p id="results-message">Showing all pizza places.</p>
-                <div id="results-container" class="results-grid"></div>
-            </section>
+                <section class="results-section">
+                    <h2>Results</h2>
+                    <p id="results-message">Showing all pizza places.</p>
+                    <div id="results-container" class="results-grid"></div>
+                </section>
+            </div>
             
         </main>
 
