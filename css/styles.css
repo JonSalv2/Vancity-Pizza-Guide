@@ -314,6 +314,18 @@ footer p {
 
 /* ==================== Home Page ==================== */
 
+.site-description a {
+    color: var(--olive-accent);
+    font-weight: 700;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.16em;
+}
+
+.site-description a:hover,
+.site-description a:focus-visible {
+    color: var(--deep-brick);
+}
+
 
 /* ==================== Search Page ==================== */
 .search-form {
@@ -328,9 +340,80 @@ footer p {
     gap: 0.4rem;
 }
 
+.form-row label {
+    color: var(--olive-accent);
+    font-weight: 700;
+}
+
+.search-form select {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    font-family: inherit;
+    font-size: 1rem;
+    border: 1px solid #9b8f83;
+    background-color: rgba(255, 255, 255, 0.75);
+    color: #2b1b15;
+    box-sizing: border-box;
+    transition:
+        border-color 160ms ease,
+        box-shadow 160ms ease,
+        background-color 160ms ease;
+}
+
+.search-form select:focus-visible,
+.recommendation-form input:focus-visible,
+.recommendation-form select:focus-visible,
+.recommendation-form textarea:focus-visible {
+    border-color: var(--olive-accent);
+    outline: 3px solid rgba(91, 106, 60, 0.18);
+    box-shadow: 0 0 0 4px rgba(91, 106, 60, 0.14);
+    background-color: #fffdf8;
+}
+
 .form-buttons {
     display: flex;
     gap: 1rem;
+}
+
+.form-buttons button,
+.form-button button {
+    min-width: 140px;
+    padding: 0.7rem 1.15rem;
+    border: 1px solid #44512d;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #6d7d49 0%, var(--olive-accent) 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        0 4px 0 rgba(48, 57, 31, 0.55);
+    color: var(--parchment);
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:
+        transform 160ms ease,
+        box-shadow 160ms ease,
+        background 160ms ease;
+}
+
+.form-buttons button:hover,
+.form-buttons button:focus-visible,
+.form-button button:hover,
+.form-button button:focus-visible {
+    background: linear-gradient(180deg, #7a8d53 0%, #647444 100%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.22),
+        0 4px 0 rgba(48, 57, 31, 0.55);
+}
+
+.form-buttons button:active,
+.form-button button:active {
+    transform: translateY(3px);
+    box-shadow:
+        inset 0 3px 8px rgba(0, 0, 0, 0.2),
+        0 1px 0 rgba(48, 57, 31, 0.55);
 }
 
 .results-grid {
@@ -340,19 +423,37 @@ footer p {
 }
 
 .result-card {
-    border: 1px solid #ccc;
-    padding: 1rem;
-    border-radius: 8px;
-    background-color: #fff;
+    padding: 1rem 1.1rem 1.15rem;
+    border: 1px solid #c7baa8;
+    border-top: 5px solid var(--olive-accent);
+    border-radius: 12px;
+    background: linear-gradient(180deg, #fffdfa 0%, #f7f0e6 100%);
+    box-shadow: 0 10px 20px rgba(59, 42, 31, 0.08);
+}
+
+.result-card h3 {
+    margin: 0 0 0.85rem;
+    color: var(--deep-brick);
+}
+
+.result-card strong {
+    color: var(--olive-accent);
 }
 
 .name-link {
     color: inherit;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.14em;
 }
 
 .name-link:hover,
-.name-link:focus {
-    text-decoration: none;
+.name-link:focus-visible {
+    color: var(--olive-accent);
+}
+
+#results-message {
+    color: var(--olive-accent);
+    font-weight: 700;
 }
 
 /* ==================== Styles Page ==================== */
@@ -374,7 +475,7 @@ footer p {
 }
 
 .styles-highlight-list li::marker {
-    color: var(--burnt-clay);
+    color: var(--olive-accent);
 }
 
 .table-wrapper {
@@ -456,7 +557,7 @@ footer p {
     padding: 1.5rem 1.75rem;
     background: #f5f0ea;
     border: 1px solid #b9a391;
-    border-left: 6px solid var(--burnt-clay);
+    border-left: 6px solid var(--olive-accent);
     box-shadow: 0 10px 24px rgba(59, 42, 31, 0.08);
 }
 
@@ -472,7 +573,7 @@ footer p {
     margin-top: 0.85rem;
     font-style: normal;
     font-weight: 700;
-    color: var(--deep-brick);
+    color: var(--olive-accent);
 }
 
 .timeline-list {
@@ -591,6 +692,7 @@ footer p {
 .timeline-location {
     margin: 0 0 16px;
     font-weight: 700;
+    color: var(--olive-accent);
 }
 
 .timeline-content p:last-child {
@@ -653,6 +755,7 @@ footer p {
 .checkbox-group input[type="checkbox"] {
     width: auto;
     margin-top: 0.2rem;
+    accent-color: var(--olive-accent);
 }
 
 .form-button {
@@ -661,19 +764,6 @@ footer p {
 
 .form-button button {
     min-width: 160px;
-    padding: 0.7rem 1.5rem;
-    font-family: inherit;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #fff;
-    background: linear-gradient(to bottom, #8f3a2a, #6f2418);
-    border: 1px solid #4e140d;
-    cursor: pointer;
-}
-
-.form-button button:hover,
-.form-button button:focus {
-    opacity: 0.92;
 }
 
 .visually-hidden {
