@@ -2,6 +2,7 @@
 <html lang="en">
 
     <!-- Search – Displays the pizza search page for browsing places by style. -->
+    <!-- Shared metadata, global styles, and the scripts that power navigation and filtering. -->
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +14,9 @@
         <script src="js/search.js" defer></script>
     </head>
 
-    <body>
+    <body class="search-page">
 
+        <!-- Shared site header with the brand link and responsive navigation. -->
         <header class="site-header">
             <div class="site-header__inner">
                 <h1 class="site-title">
@@ -37,18 +39,20 @@
         </header>
 
         <main>
+            <!-- Hero banner introduces the page with a consistent photo treatment. -->
             <section class="hero">
                 <h2>Search Pizza Places</h2>
                 <p>Browse Vancouver pizza spots by pizza style.</p>
             </section>
 
+            <!-- The filter controls and result cards stay grouped so the interaction is easy to scan. -->
             <div class="page-content">
                 <section class="search-section">
                     <h2>Find the slice you're looking for</h2>
 
                     <h3>Filter by Style</h3>
 
-                    <form id="filter-form" class="search-form">
+                    <form class="search-form">
                         <div class="form-row">
                             <label for="style-filter">Choose a pizza style</label>
                             <select id="style-filter" name="style">
@@ -67,15 +71,16 @@
                     </form>
                 </section>
 
-                <section class="results-section">
+                <section>
                     <h2>Results</h2>
-                    <p id="results-message">Showing all pizza places.</p>
+                    <p id="results-message">Choose a pizza style or click Show All.</p>
                     <div id="results-container" class="results-grid"></div>
                 </section>
             </div>
             
         </main>
 
+        <!-- Shared footer repeats the social links and site copyright. -->
         <footer>
             <div class="footer-socials">
                 <a href="#" class="footer-social-link footer-social-link--instagram" title="Instagram">

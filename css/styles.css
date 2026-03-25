@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Alegreya:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap");
 
 /* ==================== Base layout ==================== */
+/* Shared type, spacing, and a compact core palette used across the whole site. */
 :root {
   --deep-brick: #7a1f1f;
   --burnt-clay: #a34a2f;
@@ -8,7 +9,14 @@
   --parchment: #f3e8d7;
   --olive-accent: #5b6a3c;
   --soft-charcoal: #2b2b2b;
+  --canvas: #ead9c0;
+  --surface: #f5f0ea;
+  --border-color: #b9a391;
   --button-shadow: rgba(34, 22, 15, 0.55);
+  --panel-shadow: 0 10px 24px rgba(59, 42, 31, 0.08);
+  --panel-shadow-strong: 0 10px 24px rgba(59, 42, 31, 0.12);
+  --focus-ring: rgba(91, 106, 60, 0.18);
+  --focus-shadow: rgba(91, 106, 60, 0.14);
   --page-gutter: clamp(1rem, 3vw, 2rem);
   --font-body: "Source Sans 3", sans-serif;
   --font-display: "Alegreya", serif;
@@ -25,7 +33,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #ead9c0;
+  background-color: var(--canvas);
   color: var(--soft-charcoal);
   font-family: var(--font-body);
 }
@@ -41,11 +49,12 @@ a {
 main {
   flex: 1 0 auto;
   padding: 2rem var(--page-gutter) 4rem;
+  /* Cascading background*/
   background: linear-gradient(
     180deg,
-    #ead9c0 0%,
+    var(--canvas) 0%,
     var(--parchment) 18%,
-    #fbf6ef 100%
+    var(--surface) 100%
   );
 }
 
@@ -55,7 +64,7 @@ main {
   margin: 0 auto;
 }
 
-main > section:not(.hero) > h2,
+/* Shared section headings keep each page intro visually consistent. */
 .page-content > section > h2 {
   max-width: 700px;
   margin: 0 auto 1.5rem;
@@ -68,6 +77,7 @@ main > section:not(.hero) > h2,
 }
 
 /* ==================== Hero ==================== */
+/* The hero reuses the same image treatment so every page opens with the same visual anchor. */
 
 .hero {
   position: relative;
@@ -142,11 +152,12 @@ main > section:not(.hero) > h2,
   font-size: clamp(1.05rem, 1.8vw, 1.35rem);
   font-weight: 600;
   letter-spacing: 0.03em;
-  color: rgba(255, 249, 240, 0.96);
+  color: var(--surface);
   text-shadow: 0 3px 14px rgba(0, 0, 0, 0.45);
 }
 
 /* ==================== Header ==================== */
+/* The shared header uses a compact grid on small screens and expands later in media queries. */
 
 .site-header {
   background-image:
@@ -162,15 +173,15 @@ main > section:not(.hero) > h2,
   max-width: 1600px;
   margin: 0 auto;
   padding: 1rem 1.5rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
   gap: 1.5rem;
-  flex-wrap: wrap;
 }
 
 .site-title {
   margin: 0;
+  min-width: 0;
   font-family: var(--font-display);
   font-size: clamp(1.9rem, 3vw, 2.75rem);
   font-weight: 700;
@@ -186,10 +197,11 @@ main > section:not(.hero) > h2,
 
 .site-title a:hover,
 .site-title a:focus-visible {
-  color: #fff9ef;
+  color: var(--surface);
 }
 
 /* ==================== Nav Bar ==================== */
+/* Mobile navigation stays collapsed until JavaScript marks the header as ready. */
 
 .menu-toggle {
   display: none;
@@ -216,15 +228,13 @@ main > section:not(.hero) > h2,
   max-width: 3.2rem;
 }
 
-/* .menu-toggle:hover,
-.menu-toggle:focus-visible,
 .site-header.nav-open .menu-toggle {
-    background: linear-gradient(180deg, #bc6646 0%, var(--burnt-clay) 100%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.2),
-        0 4px 0 var(--button-shadow);
-    transform: translateY(-1px);
-} */
+  background: linear-gradient(180deg, #bc6646 0%, var(--burnt-clay) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 4px 0 var(--button-shadow);
+  transform: translateY(-1px);
+}
 
 .menu-toggle:active {
   transform: translateY(3px);
@@ -250,7 +260,7 @@ main > section:not(.hero) > h2,
   padding: 0.7rem 1rem;
   border: 2px solid var(--dark-wood);
   border-radius: 999px;
-  background: linear-gradient(180deg, #f8f0e5 0%, #e2cfb7 100%);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--canvas) 100%);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.55),
     0 4px 0 var(--button-shadow);
@@ -293,16 +303,6 @@ main > section:not(.hero) > h2,
   outline-offset: 3px;
 }
 
-.site-header__inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-}
-
-.site-title {
-  min-width: 0;
-}
-
 .site-header.nav-ready .menu-toggle {
   display: inline-flex;
   justify-self: end;
@@ -318,6 +318,7 @@ main > section:not(.hero) > h2,
 }
 
 /* ==================== Footer ==================== */
+/* Footer social links share a base style and swap accent colors through custom properties. */
 footer {
   padding: 1rem 1.5rem;
   text-align: center;
@@ -344,11 +345,15 @@ footer p {
 }
 
 .footer-social-link {
+  --social-bg: var(--deep-brick);
+  --social-hover-bg: var(--burnt-clay);
+  --social-hover-border: var(--parchment);
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
   padding: 0.55rem 0.95rem;
-  border: 1px solid transparent;
+  border: 1px solid var(--parchment);
+  background: var(--social-bg);
   color: var(--parchment);
   text-decoration: none;
   font-weight: 700;
@@ -363,6 +368,8 @@ footer p {
 
 .footer-social-link:hover,
 .footer-social-link:focus-visible {
+  background: var(--social-hover-bg);
+  border-color: var(--social-hover-border);
   transform: translateY(-2px);
   box-shadow: 0 10px 18px rgba(0, 0, 0, 0.28);
 }
@@ -372,40 +379,50 @@ footer p {
 }
 
 .footer-social-link--instagram {
-  background: var(--deep-brick);
-  border-color: var(--parchment);
-}
-
-.footer-social-link--instagram:hover,
-.footer-social-link--instagram:focus-visible {
-  background: #f04f6d;
-  border-color: #f7aa53;
+  --social-bg: var(--deep-brick);
+  --social-hover-bg: #f04f6d;
+  --social-hover-border: #f7aa53;
 }
 
 .footer-social-link--tiktok {
-  background: var(--burnt-clay);
-  border-color: var(--parchment);
-}
-
-.footer-social-link--tiktok:hover,
-.footer-social-link--tiktok:focus-visible {
-  background: #171717;
-  border-color: #8ce2e8;
+  --social-bg: var(--burnt-clay);
+  --social-hover-bg: #171717;
+  --social-hover-border: #8ce2e8;
 }
 
 .footer-social-link--facebook {
-  background: var(--olive-accent);
-  border-color: var(--parchment);
-}
-
-.footer-social-link--facebook:hover,
-.footer-social-link--facebook:focus-visible {
-  background: #2a86ff;
-  border-color: #a3c8ff;
+  --social-bg: var(--olive-accent);
+  --social-hover-bg: #2a86ff;
+  --social-hover-border: #a3c8ff;
 }
 
 
 /* ==================== Home Page ==================== */
+/* Reusable panel styling keeps cards and content blocks visually related without repeating declarations. */
+
+.guide-card,
+.site-description,
+.styles-overview,
+.table-wrapper,
+.history-quote,
+.timeline-content,
+.result-card,
+.lorem-page .page-content ul,
+.lorem-page .page-content ol,
+.lorem-page .article-image {
+  box-shadow: var(--panel-shadow);
+}
+
+.site-description,
+.styles-overview,
+.table-wrapper,
+.history-quote,
+.timeline-content,
+.lorem-page .page-content ul,
+.lorem-page .page-content ol {
+  border: 1px solid var(--border-color);
+  background: var(--surface);
+}
 
 .home-explore {
   margin: 0 auto 2rem;
@@ -417,10 +434,9 @@ footer p {
 }
 
 .guide-card {
-  border: 1px solid #b9a391;
+  border: 1px solid var(--border-color);
   border-top: 5px solid var(--olive-accent);
-  background: #f5f0ea;
-  box-shadow: 0 10px 24px rgba(59, 42, 31, 0.08);
+  background: var(--surface);
   overflow: hidden;
 }
 
@@ -456,15 +472,12 @@ footer p {
 
 .guide-card a:hover,
 .guide-card a:focus-visible {
-  background: linear-gradient(180deg, #f8f3ec 0%, #efe3d4 100%);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--canvas) 100%);
 }
 
 .site-description {
   margin: 0 auto;
   padding: 1.75rem 2rem;
-  border: 1px solid #b9a391;
-  background: #f5f0ea;
-  box-shadow: 0 10px 24px rgba(59, 42, 31, 0.08);
 }
 
 .site-description p {
@@ -486,6 +499,11 @@ footer p {
 
 
 /* ==================== Search Page ==================== */
+/* Search and submit forms share the same field and button language so the controls feel related. */
+
+.search-page main {
+  background: var(--parchment);
+}
 
 .search-form {
   display: grid;
@@ -513,15 +531,20 @@ footer p {
   text-align: center;
 }
 
-.search-form select {
-  width: min(100%, 26rem);
+.search-form select,
+.recommendation-form input,
+.recommendation-form select,
+.recommendation-form textarea {
   padding: 0.75rem 0.9rem;
   font-family: inherit;
   font-size: 1rem;
-  border: 1px solid #9b8f83;
-  background-color: rgba(255, 255, 255, 0.75);
-  color: #2b1b15;
-  box-sizing: border-box;
+  border: 1px solid var(--border-color);
+  background-color: var(--surface);
+  color: var(--dark-wood);
+}
+
+.search-form select {
+  width: min(100%, 26rem);
   transition:
     border-color 160ms ease,
     box-shadow 160ms ease,
@@ -533,9 +556,9 @@ footer p {
 .recommendation-form select:focus-visible,
 .recommendation-form textarea:focus-visible {
   border-color: var(--olive-accent);
-  outline: 3px solid rgba(91, 106, 60, 0.18);
-  box-shadow: 0 0 0 4px rgba(91, 106, 60, 0.14);
-  background-color: #fffdf8;
+  outline: 3px solid var(--focus-ring);
+  box-shadow: 0 0 0 4px var(--focus-shadow);
+  background-color: var(--surface);
 }
 
 .form-buttons {
@@ -549,12 +572,12 @@ footer p {
 .form-button button {
   min-width: 140px;
   padding: 0.7rem 1.15rem;
-  border: 1px solid #44512d;
+  border: 1px solid var(--olive-accent);
   border-radius: 999px;
   background: linear-gradient(180deg, #6d7d49 0%, var(--olive-accent) 100%);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.18),
-    0 4px 0 rgba(48, 57, 31, 0.55);
+    0 4px 0 var(--button-shadow);
   color: var(--parchment);
   font-family: inherit;
   font-size: 0.95rem;
@@ -575,7 +598,7 @@ footer p {
   background: linear-gradient(180deg, #7a8d53 0%, #647444 100%);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.22),
-    0 4px 0 rgba(48, 57, 31, 0.55);
+    0 4px 0 var(--button-shadow);
 }
 
 .form-buttons button:active,
@@ -583,7 +606,7 @@ footer p {
   transform: translateY(3px);
   box-shadow:
     inset 0 3px 8px rgba(0, 0, 0, 0.2),
-    0 1px 0 rgba(48, 57, 31, 0.55);
+    0 1px 0 var(--button-shadow);
 }
 
 .results-grid {
@@ -594,10 +617,9 @@ footer p {
 
 .result-card {
   padding: 1rem 1.1rem 1.15rem;
-  border: 1px solid #c7baa8;
+  border: 1px solid var(--border-color);
   border-top: 5px solid var(--olive-accent);
-  background: linear-gradient(180deg, #fffdfa 0%, #f7f0e6 100%);
-  box-shadow: 0 10px 20px rgba(59, 42, 31, 0.08);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--parchment) 100%);
 }
 
 .result-card h3 {
@@ -626,13 +648,11 @@ footer p {
 }
 
 /* ==================== Styles Page ==================== */
+/* The styles page uses one panel system for the explainer copy and the comparison table. */
 
 .styles-overview {
   margin: 0 auto 1.5rem;
   padding: 1.75rem 2rem;
-  background: #f5f0ea;
-  border: 1px solid #b9a391;
-  box-shadow: 0 10px 24px rgba(59, 42, 31, 0.08);
 }
 
 .styles-highlight-list {
@@ -649,8 +669,6 @@ footer p {
 .table-wrapper {
   margin: 0 auto;
   padding: 1.5rem;
-  border: 1px solid #b9a391;
-  background: #f5f0ea;
   overflow-x: auto;
 }
 
@@ -659,8 +677,8 @@ footer p {
   border-collapse: collapse;
   min-width: 760px;
   margin: 0;
-  background-color: #fffdf8;
-  border: 1px solid #c8b39f;
+  background-color: var(--surface);
+  border: 1px solid var(--border-color);
   font-size: 1rem;
 }
 
@@ -677,7 +695,7 @@ footer p {
 
 .pizza-styles-table th,
 .pizza-styles-table td {
-  border: 1px solid #d4bfab;
+  border: 1px solid var(--border-color);
   padding: 0.9rem 1rem;
   text-align: left;
   vertical-align: top;
@@ -691,40 +709,38 @@ footer p {
 }
 
 .pizza-styles-table tbody th {
-  background-color: #ead9c0;
+  background-color: var(--canvas);
   color: var(--dark-wood);
   font-weight: 700;
 }
 
 .pizza-styles-table tbody tr:nth-child(even) {
-  background-color: #f8efe3;
+  background-color: var(--parchment);
 }
 
 .pizza-styles-table tbody tr:hover {
-  background-color: #efe1cf;
+  background-color: var(--canvas);
 }
 
 .pizza-styles-table tbody tr:hover th,
 .pizza-styles-table tbody tr:hover td {
-  background-color: #efe1cf;
+  background-color: var(--canvas);
 }
 
 /* ==================== History Page ==================== */
+/* The timeline keeps a simple single-column flow first, then alternates panels on larger screens. */
 
 /* Timeline Styling*/
 .history-timeline {
   margin: 0 auto;
-  padding: 20px;
+  padding: 1.25rem;
 }
 
 .history-quote {
   max-width: 760px;
   margin: 0 auto 3rem;
   padding: 1.5rem 1.75rem;
-  background: #f5f0ea;
-  border: 1px solid #b9a391;
   border-left: 6px solid var(--olive-accent);
-  box-shadow: 0 10px 24px rgba(59, 42, 31, 0.08);
 }
 
 .history-quote p {
@@ -760,7 +776,7 @@ footer p {
   left: var(--timeline-marker-offset);
   transform: translateX(-50%);
   width: 4px;
-  background: #6b4a3a;
+  background: var(--dark-wood);
   border-radius: 999px;
 }
 
@@ -778,21 +794,13 @@ footer p {
   content: none;
 }
 
-.timeline-content,
-.timeline-image {
-  width: 100%;
-  box-sizing: border-box;
-}
-
 .timeline-content {
-  background: #f5f0ea;
-  border: 1px solid #b9a391;
-  padding: 24px;
+  width: 100%;
+  padding: 1.5rem;
   min-height: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: 0 10px 24px rgba(59, 42, 31, 0.08);
 }
 
 .timeline-content::before {
@@ -810,11 +818,12 @@ footer p {
 
 .timeline-image {
   position: relative;
+  width: 100%;
   aspect-ratio: 16 / 10;
   min-height: 0;
   background-color: var(--olive-accent);
   overflow: visible;
-  box-shadow: 0 10px 24px rgba(59, 42, 31, 0.12);
+  box-shadow: var(--panel-shadow-strong);
 }
 
 .timeline-image::before {
@@ -826,8 +835,8 @@ footer p {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #8b2e23;
-  border: 3px solid #d8c3b0;
+  background: var(--deep-brick);
+  border: 3px solid var(--parchment);
   z-index: 2;
 }
 
@@ -854,6 +863,7 @@ footer p {
 }
 
 /* ==================== Submit Page ==================== */
+/* The submit page keeps the form layout narrow so the fields remain easy to scan and complete. */
 
 /* Form Styling */
 .recommendation-form-section {
@@ -861,12 +871,6 @@ footer p {
   margin: 0 auto;
   padding: 2rem 1.5rem;
   text-align: center;
-}
-
-.recommendation-form-section p {
-  margin-bottom: 1.5rem;
-  font-size: 1.1rem;
-  font-weight: 700;
 }
 
 .recommendation-form {
@@ -881,13 +885,6 @@ footer p {
 .recommendation-form select,
 .recommendation-form textarea {
   width: 100%;
-  padding: 0.75rem 0.9rem;
-  font-family: inherit;
-  font-size: 1rem;
-  border: 1px solid #9b8f83;
-  background-color: rgba(255, 255, 255, 0.65);
-  color: #2b1b15;
-  box-sizing: border-box;
 }
 
 .recommendation-form textarea {
@@ -928,6 +925,7 @@ footer p {
 }
 
 /* ==================== Lorem Page ==================== */
+/* The placeholder page borrows the same surfaces as the live content pages to stay visually consistent. */
 
 .lorem-page .page-content a {
   color: var(--olive-accent);
@@ -946,17 +944,17 @@ footer p {
   margin: 1.5rem auto 2rem;
   padding: 1.5rem 1.5rem 1.5rem 3rem;
   max-width: 760px;
-  border: 1px solid #b9a391;
-  background: #f5f0ea;
-  box-shadow: 0 10px 24px rgba(59, 42, 31, 0.08);
-  display: block;
-  gap: 0.85rem;
 }
 
 .lorem-page .page-content ul li,
 .lorem-page .page-content ol li {
   line-height: 1.7;
   color: var(--soft-charcoal);
+}
+
+.lorem-page .page-content ul li + li,
+.lorem-page .page-content ol li + li {
+  margin-top: 0.65rem;
 }
 
 .lorem-page .page-content ul li::marker,
@@ -978,9 +976,9 @@ footer p {
   max-width: 760px;
   margin: 1.5rem auto 2rem;
   padding: 1.25rem 1.5rem;
-  border: 1px solid #b9a391;
+  border: 1px solid var(--border-color);
   background: var(--dark-wood);
-  box-shadow: 0 10px 24px rgba(59, 42, 31, 0.12);
+  box-shadow: var(--panel-shadow-strong);
   overflow-x: auto;
 }
 
@@ -996,9 +994,8 @@ footer p {
   width: min(100%, 14rem);
   margin: 0 auto 2rem;
   padding: 0.65rem;
-  border: 1px solid #b9a391;
+  border: 1px solid var(--border-color);
   background: var(--parchment);
-  box-shadow: 0 10px 24px rgba(59, 42, 31, 0.08);
 }
 
 .lorem-page .history-quote {
@@ -1020,6 +1017,7 @@ footer p {
 }
 
 /* ==================== Media Queries ==================== */
+/* Layout changes only enhance upward from the mobile base so the smallest screens stay stable. */
 
 /* Small mobile layout: 320px maximum width */
 @media (max-width: 320px) {
@@ -1038,10 +1036,6 @@ footer p {
     padding: 1.25rem 1rem;
   }
 
-  .timeline-list {
-    padding-left: 0;
-  }
-
   .timeline-content {
     padding: 1.1rem;
   }
@@ -1056,7 +1050,6 @@ footer p {
 }
 
 @media (max-width: 413px) {
-
   /* history timeline*/
   .timeline-list::before,
   .timeline-image::before {
@@ -1073,9 +1066,9 @@ footer p {
 
   /* footer */
   .footer-social-link {
-        width: 100%;
-        justify-content: center;
-    }
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* Tablet layout: 768px minimum width */
@@ -1111,15 +1104,10 @@ footer p {
     padding: 1.75rem;
   }
 
-  .timeline-list {
-    padding-left: 0;
-  }
-
   .timeline-item {
     --timeline-gutter: 3rem;
     row-gap: 1.25rem;
   }
-
 }
 
 /* Desktop layout */
@@ -1136,10 +1124,6 @@ footer p {
   }
 
   /* history timeline */
-  .timeline-list {
-    padding-left: 0;
-  }
-
   .timeline-list::before {
     left: 50%;
     transform: translateX(-50%);
@@ -1163,8 +1147,8 @@ footer p {
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background: #8b2e23;
-    border: 3px solid #d8c3b0;
+    background: var(--deep-brick);
+    border: 3px solid var(--parchment);
     z-index: 2;
   }
 
@@ -1213,7 +1197,6 @@ footer p {
 
 /* Wide desktop layout */
 @media (min-width: 1200px) {
-  
   /* Nav Bar | Header */
   .site-header.nav-ready .site-nav,
   .site-header.nav-ready.nav-open .site-nav,
@@ -1233,5 +1216,4 @@ footer p {
     min-width: 6.6rem;
     padding: 0.75rem 1.1rem;
   }
-
 }
