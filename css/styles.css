@@ -929,6 +929,96 @@ footer p {
 
 /* ==================== Lorem Page ==================== */
 
+.lorem-page .page-content a {
+  color: var(--olive-accent);
+  font-weight: 700;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.16em;
+}
+
+.lorem-page .page-content a:hover,
+.lorem-page .page-content a:focus-visible {
+  color: var(--deep-brick);
+}
+
+.lorem-page .page-content ul,
+.lorem-page .page-content ol {
+  margin: 1.5rem auto 2rem;
+  padding: 1.5rem 1.5rem 1.5rem 3rem;
+  max-width: 760px;
+  border: 1px solid #b9a391;
+  background: #f5f0ea;
+  box-shadow: 0 10px 24px rgba(59, 42, 31, 0.08);
+  display: block;
+  gap: 0.85rem;
+}
+
+.lorem-page .page-content ul li,
+.lorem-page .page-content ol li {
+  line-height: 1.7;
+  color: var(--soft-charcoal);
+}
+
+.lorem-page .page-content ul li::marker,
+.lorem-page .page-content ol li::marker {
+  color: var(--olive-accent);
+}
+
+.lorem-page .page-content h3,
+.lorem-page .page-content h4,
+.lorem-page .page-content h5,
+.lorem-page .page-content h6 {
+  margin-top: 2rem;
+  text-align: center;
+  font-family: var(--font-display);
+  color: var(--deep-brick);
+}
+
+.lorem-page .page-content pre {
+  max-width: 760px;
+  margin: 1.5rem auto 2rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid #b9a391;
+  background: var(--dark-wood);
+  box-shadow: 0 10px 24px rgba(59, 42, 31, 0.12);
+  overflow-x: auto;
+}
+
+.lorem-page .page-content code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--parchment);
+}
+
+.lorem-page .article-image {
+  display: block;
+  width: min(100%, 14rem);
+  margin: 0 auto 2rem;
+  padding: 0.65rem;
+  border: 1px solid #b9a391;
+  background: var(--parchment);
+  box-shadow: 0 10px 24px rgba(59, 42, 31, 0.08);
+}
+
+.lorem-page .history-quote {
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.lorem-page .history-quote cite {
+  color: var(--olive-accent);
+}
+
+.lorem-page .table-wrapper {
+  max-width: 760px;
+  margin: 2rem auto;
+}
+
+.lorem-page .pizza-styles-table {
+  min-width: 0;
+}
+
 /* ==================== Media Queries ==================== */
 
 /* Small mobile layout: 320px maximum width */
