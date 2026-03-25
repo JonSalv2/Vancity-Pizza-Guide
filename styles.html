@@ -57,7 +57,8 @@
                 </section>
 
                 <section class="table-wrapper">
-                    <table class="pizza-styles-table">
+                    <!-- Change: this table stacks into cards on smaller screens only. -->
+                    <table class="pizza-styles-table pizza-styles-table--stacked">
                         <caption>Pizza Style Quick Reference</caption>
                         <thead>
                             <tr>
@@ -70,33 +71,33 @@
                         <tbody>
                             <tr>
                                 <th scope="row">Neapolitan</th>
-                                <td>Thin, soft, airy edge</td>
-                                <td>Tender centre with leopard spotting</td>
-                                <td>Wood-fired char, fresh toppings, soft middle</td>
+                                <td data-label="Crust">Thin, soft, airy edge</td>
+                                <td data-label="Texture">Tender centre with leopard spotting</td>
+                                <td data-label="Signature Traits">Wood-fired char, fresh toppings, soft middle</td>
                             </tr>
                             <tr>
                                 <th scope="row">New York</th>
-                                <td>Thin but sturdy</td>
-                                <td>Crisp underneath, foldable slice</td>
-                                <td>Large slices, balanced sauce and cheese, easy fold</td>
+                                <td data-label="Crust">Thin but sturdy</td>
+                                <td data-label="Texture">Crisp underneath, foldable slice</td>
+                                <td data-label="Signature Traits">Large slices, balanced sauce and cheese, easy fold</td>
                             </tr>
                             <tr>
                                 <th scope="row">By the Slice</th>
-                                <td>Varies by shop</td>
-                                <td>Usually reheated for quick service</td>
-                                <td>Fast service, easy variety, casual grab-and-go</td>
+                                <td data-label="Crust">Varies by shop</td>
+                                <td data-label="Texture">Usually reheated for quick service</td>
+                                <td data-label="Signature Traits">Fast service, easy variety, casual grab-and-go</td>
                             </tr>
                             <tr> 
                                 <th scope="row">Modern / Deep Dish</th>
-                                <td>Varies by shop</td>
-                                <td>Can range from thin and crisp to buttery and fluffy</td>
-                                <td>Creative combinations, rich layers, heavier portions</td>
+                                <td data-label="Crust">Varies by shop</td>
+                                <td data-label="Texture">Can range from thin and crisp to buttery and fluffy</td>
+                                <td data-label="Signature Traits">Creative combinations, rich layers, heavier portions</td>
                             </tr>
                             <tr>
                                 <th scope="row">Taglio</th>
-                                <td>Light, airy, rectangular</td>
-                                <td>Crispy bottom with soft interior</td>
-                                <td>Roman pan bake, rectangular cuts, flexible portions</td>
+                                <td data-label="Crust">Light, airy, rectangular</td>
+                                <td data-label="Texture">Crispy bottom with soft interior</td>
+                                <td data-label="Signature Traits">Roman pan bake, rectangular cuts, flexible portions</td>
                             </tr>
                         </tbody>
                     </table>
@@ -121,7 +122,7 @@
                     <span>Facebook</span>
                 </a>
             </div>
-            <p>&copy; 2026 Vancouver Pizza Guide</p>
+            <p>&copy; 2026 Vancity Pizza Guide</p>
         </footer>
         
     </body>
