@@ -198,32 +198,39 @@ main {
 .site-title {
   margin: 0;
   min-width: 0;
-  font-family: var(--font-display);
-  font-size: clamp(1.9rem, 3vw, 2.75rem);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  line-height: 1.1;
+  align-self: center;
+  margin-top: 1rem;
 }
 
 .site-title a {
-  color: var(--parchment);
-  text-decoration: none;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 19rem;
+  height: 9rem;
+  max-width: 100%;
+  /* text-decoration: none; */
+  overflow: hidden;
+  border-radius: 0.9rem;
 }
 
-.site-title a:hover,
-.site-title a:focus-visible {
-  color: var(--surface);
+.site-title img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.25) translateX(10px);
 }
+
 
 /* ==================== Nav Bar ==================== */
 
+/* Menu Button */
 .menu-toggle {
   display: none;
   align-items: center;
   justify-content: center;
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
   padding: 0.8rem;
   border: 2px solid var(--parchment);
   border-radius: 50%;
@@ -240,7 +247,7 @@ main {
 
 .menu-toggle img {
   display: block;
-  max-width: 3.2rem;
+  max-width: 4rem;
 }
 
 .site-header.nav-open .menu-toggle {
@@ -258,6 +265,7 @@ main {
     0 1px 0 var(--button-shadow);
 }
 
+/* Nav Buttons */
 .site-nav {
   width: 100%;
   display: flex;
@@ -1090,18 +1098,8 @@ footer p {
 /* ==================== Media Queries ==================== */
 /* Layout changes only enhance upward from the mobile base so the smallest screens stay stable. */
 
-/* Small mobile layout: 320px maximum width */
+/* Small mobile layout */
 @media (max-width: 320px) {
-  /* Nav Bar | Header */
-  .site-title {
-    width: min-content;
-  }
-
-  .site-title a {
-    display: block;
-    line-height: 1;
-  }
-
   /* history timeline */
   .history-timeline {
     padding: 1.25rem 1rem;
@@ -1142,7 +1140,7 @@ footer p {
   }
 }
 
-/* Tablet layout: 768px minimum width */
+/* Tablet layout */
 @media (min-width: 768px) {
   /* Nav Bar | Header */
   .site-header__inner {
@@ -1181,7 +1179,6 @@ footer p {
   }
 
   /* Styles page */
-
   /* Turns the stacked cards back into a table on tablets and larger screens. */
   .pizza-styles-table--stacked {
     display: table;
@@ -1306,8 +1303,8 @@ footer p {
   }
 }
 
-/* Wide desktop layout */
-@media (min-width: 1200px) {
+/* Nav Bar on wide desktop layout */
+@media (min-width: 1100px) {
   /* Nav Bar | Header */
   .site-header.nav-ready .site-nav,
   .site-header.nav-ready.nav-open .site-nav,
