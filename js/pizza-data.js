@@ -1,3 +1,19 @@
+/*
+An array containing all the data for the search function in search.js
+
+The data in this array was populated using OpenAI CODEX with the following prompt:
+
+"Create a Javascript array of objects called 'pizzaPlaces'. There will be 5 key fields for each object
+called name, neighbourhood, style, address, description. The value fields need to be populated with the 
+name and correlating style data provided in the text file located at (filepath), 
+note that some names will have multiple styles so the value field for name should also be an array.
+
+Additionally, populate the address and neighbourhood fields with the correct correlating data be searching 
+for the business name on google maps, all of these businesses are located in the Metro-Vancouver area. 
+
+Lastly, provide a brief one sentence description of each business based on the aforementioned google maps search"
+*/
+
 const pizzaPlaces = [
   {
     name: "Via Tevere",
@@ -59,14 +75,14 @@ const pizzaPlaces = [
   {
     name: "AJ’s Brooklyn Pizza Joint",
     neighbourhood: "Mount Pleasant",
-    style: ["New York", "By the Slice", "Modern"],
+    style: ["New York", "By the Slice"],
     address: "325 E Broadway, Vancouver, BC V5T 1W5",
     description: "A popular Broadway pizza shop known for Brooklyn-style pies, slices, and a more modern pizza-shop feel."
   },
   {
     name: "Nat’s New York Pizzeria",
     neighbourhood: "Kitsilano / West Broadway",
-    style: ["New York", "By the Slice", "Modern"],
+    style: ["New York", "By the Slice"],
     address: "2684 W Broadway, Vancouver, BC V6K 2G3",
     description: "A longtime local favourite for classic New York-style pizza and quick slices on West Broadway."
   },
@@ -88,14 +104,14 @@ const pizzaPlaces = [
   {
     name: "Uncle Fatih’s",
     neighbourhood: "Gastown / Stadium District",
-    style: ["By the Slice"],
+    style: ["By the Slice", "Modern"],
     address: "638 Abbott St, Vancouver, BC V6B 6N7",
     description: "A local slice chain known for late-night pizza, big portions, and easy downtown pickup."
   },
   {
     name: "Pizza Garden",
     neighbourhood: "Downtown",
-    style: ["By the Slice", "Neapolitan"],
+    style: ["By the Slice", "Neapolitan", "Modern"],
     address: "675 Smithe St, Vancouver, BC V6B 2C9",
     description: "A local chain offering artisan-inspired pizza that blends quick-service slices with Neapolitan influence."
   },
