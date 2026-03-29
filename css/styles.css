@@ -176,6 +176,8 @@ main {
 /* ==================== Header ==================== */
 
 .site-header {
+  position: relative;
+  z-index: 20;
   background-image:
     linear-gradient(rgba(43, 27, 21, 0.36), rgba(43, 27, 21, 0.52)),
     url("../images/wood-texture.jpg");
@@ -186,6 +188,7 @@ main {
 }
 
 .site-header__inner {
+  position: relative;
   max-width: 1600px;
   margin: 0 auto;
   padding: 1rem 1.5rem;
@@ -206,10 +209,9 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 19rem;
-  height: 9rem;
+  width: clamp(12rem, 55vw, 19rem);
+  height: clamp(5.5rem, 26vw, 9rem);
   max-width: 100%;
-  /* text-decoration: none; */
   overflow: hidden;
   border-radius: 0.9rem;
 }
@@ -229,9 +231,9 @@ main {
   display: none;
   align-items: center;
   justify-content: center;
-  width: 5rem;
-  height: 5rem;
-  padding: 0.8rem;
+  width: clamp(3.9rem, 16vw, 5rem);
+  height: clamp(3.9rem, 16vw, 5rem);
+  padding: clamp(0.45rem, 2vw, 0.8rem);
   border: 2px solid var(--parchment);
   border-radius: 50%;
   background: var(--burnt-clay);
@@ -247,7 +249,7 @@ main {
 
 .menu-toggle img {
   display: block;
-  max-width: 4rem;
+  max-width: 115%;
 }
 
 .site-header.nav-open .menu-toggle {
@@ -331,13 +333,36 @@ main {
   justify-self: end;
 }
 
+/* Drop down menu */
 .site-header.nav-ready .site-nav {
-  display: none;
-  grid-column: 1 / -1;
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  left: 0;
+  z-index: 5;
+  display: flex;
+  padding: 1rem;
+  border-top: 0;
+  border-radius: 0 0 1.2rem 1.2rem;
+  background: rgba(163, 74, 47, 0.96);
+  box-shadow: 0 18px 28px rgba(59, 42, 31, 0.18);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-0.85rem) scaleY(0.92);
+  transform-origin: top center;
+  transition:
+    opacity 180ms ease,
+    transform 260ms ease,
+    visibility 0s linear 260ms;
 }
 
 .site-header.nav-ready.nav-open .site-nav {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) scaleY(1);
+  transition-delay: 0s;
 }
 
 /* ==================== Footer ==================== */
@@ -1156,11 +1181,26 @@ footer p {
   .site-header.nav-ready .site-nav,
   .site-header.nav-ready.nav-open .site-nav,
   .site-nav {
+    position: static;
+    top: auto;
+    right: auto;
+    left: auto;
+    z-index: auto;
     width: 22rem;
     margin-left: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: stretch;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
+    transition: none;
   }
 
   .site-nav a {
