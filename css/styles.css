@@ -44,12 +44,13 @@ img {
 
 a {
   color: var(--deep-brick);
+  text-decoration: none;
 }
 
 main {
   flex: 1 0 auto;
   padding: 2rem var(--page-gutter) 4rem;
-  /* Cascading background*/
+  /* Cascading background color */
   background: linear-gradient(
     180deg,
     var(--canvas) 0%,
@@ -59,12 +60,10 @@ main {
 }
 
 .page-content {
-  width: 100%;
-  max-width: 1600px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
-/* shared content text, labels, spacing, and heading rhythm consistent. */
 .page-content p,
 .page-content li,
 .search-form label,
@@ -82,7 +81,7 @@ main {
   line-height: 1.2;
 }
 
-/* Shared section headings keep each page intro visually consistent. */
+/* Styling h2 elements except for the hero */
 .page-content > section > h2 {
   max-width: 700px;
   margin: 0 auto 1.5rem;
@@ -105,11 +104,9 @@ main {
   place-items: center;
   text-align: center;
   overflow: hidden;
-  background-image:
+  background:
     linear-gradient(rgba(25, 18, 13, 0.55), rgba(59, 42, 31, 0.42)),
-    url("../images/vancouver-pizza-banner-blend.jpg");
-  background-position: center;
-  background-size: cover;
+    url("../images/vancouver-pizza-banner-blend.jpg") center / cover;
   box-shadow:
     inset 0 16px 36px rgba(0, 0, 0, 0.16),
     inset 0 -22px 44px rgba(0, 0, 0, 0.32);
@@ -178,11 +175,9 @@ main {
 .site-header {
   position: relative;
   z-index: 20;
-  background-image:
+  background:
     linear-gradient(rgba(43, 27, 21, 0.36), rgba(43, 27, 21, 0.52)),
-    url("../images/wood-texture.jpg");
-  background-position: center;
-  background-size: cover;
+    url("../images/wood-texture.jpg") center / cover;
   border-bottom: 4px solid var(--burnt-clay);
   box-shadow: 0 12px 28px rgba(59, 42, 31, 0.2);
 }
@@ -226,11 +221,16 @@ main {
 
 /* ==================== Nav Bar ==================== */
 
+/* Shared nav/button alignment */
+.menu-toggle,
+.site-nav a {
+  align-items: center;
+  justify-content: center;
+}
+
 /* Menu Button */
 .menu-toggle {
   display: none;
-  align-items: center;
-  justify-content: center;
   width: clamp(3.9rem, 16vw, 5rem);
   height: clamp(3.9rem, 16vw, 5rem);
   padding: clamp(0.45rem, 2vw, 0.8rem);
@@ -278,8 +278,6 @@ main {
 
 .site-nav a {
   display: flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   min-width: 0;
   padding: 0.7rem 1rem;
@@ -321,6 +319,7 @@ main {
   transform: translateY(3px);
 }
 
+/* Shared focus styles */
 .site-nav a:focus-visible,
 .site-title a:focus-visible,
 .menu-toggle:focus-visible {
@@ -333,7 +332,7 @@ main {
   justify-self: end;
 }
 
-/* Drop down menu */
+/* Dropdown menu */
 .site-header.nav-ready .site-nav {
   position: absolute;
   top: calc(100% + 4px);
@@ -370,11 +369,9 @@ main {
 footer {
   padding: 1rem 1.5rem;
   text-align: center;
-  background-image:
+  background:
     linear-gradient(rgba(43, 27, 21, 0.36), rgba(43, 27, 21, 0.52)),
-    url("../images/wood-texture.jpg");
-  background-position: center;
-  background-size: cover;
+    url("../images/wood-texture.jpg") center / cover;
   border-top: 4px solid var(--burnt-clay);
   color: var(--parchment);
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
@@ -427,7 +424,6 @@ footer p {
 }
 
 .footer-social-link--instagram {
-  --social-bg: var(--deep-brick);
   --social-hover-bg: #f04f6d;
   --social-hover-border: #f7aa53;
 }
@@ -447,6 +443,7 @@ footer p {
 
 /* ==================== Home Page ==================== */
 
+/* Shared panel shadows */
 .guide-card,
 .site-description,
 .styles-overview,
@@ -460,6 +457,8 @@ footer p {
   box-shadow: var(--panel-shadow);
 }
 
+/* Shared panel surfaces */
+.guide-card,
 .site-description,
 .styles-overview,
 .table-wrapper,
@@ -475,15 +474,14 @@ footer p {
   margin: 0 auto 2rem;
 }
 
+/* Home guide cards */
 .guide-card-grid {
   display: grid;
   gap: 1.25rem;
 }
 
 .guide-card {
-  border: 1px solid var(--border-color);
   border-top: 5px solid var(--olive-accent);
-  background: var(--surface);
   overflow: hidden;
 }
 
@@ -502,8 +500,12 @@ footer p {
   object-fit: cover;
 }
 
-.guide-card h3 {
+.guide-card h3,
+.guide-card p {
   margin: 0;
+}
+
+.guide-card h3 {
   padding: 0 1.25rem;
   font-family: var(--font-display);
   font-size: 1.85rem;
@@ -511,7 +513,6 @@ footer p {
 }
 
 .guide-card p {
-  margin: 0;
   padding: 0 1.25rem 1.4rem;
   color: var(--soft-charcoal);
   line-height: 1.6;
@@ -522,6 +523,7 @@ footer p {
   background: linear-gradient(180deg, var(--surface) 0%, var(--canvas) 100%);
 }
 
+/* Site intro panel */
 .site-description {
   margin: 0 auto;
   padding: 1.75rem 2rem;
@@ -547,11 +549,12 @@ footer p {
 
 /* ==================== Search Page ==================== */
 
-/* Prevents background from changing color when page loads search results*/
+/* Bug fix for the background color changing when the results load */
 .search-page main {
   background: var(--parchment);
 }
 
+/* Search form layout */
 .search-form {
   display: grid;
   gap: 1rem;
@@ -578,6 +581,7 @@ footer p {
   text-align: center;
 }
 
+/* Shared form controls */
 .search-form select,
 .recommendation-form input,
 .recommendation-form select,
@@ -605,9 +609,9 @@ footer p {
   border-color: var(--olive-accent);
   outline: 3px solid var(--focus-ring);
   box-shadow: 0 0 0 4px var(--focus-shadow);
-  background-color: var(--surface);
 }
 
+/* Form action buttons */
 .form-buttons {
   display: flex;
   gap: 1rem;
@@ -615,8 +619,7 @@ footer p {
   width: 100%;
 }
 
-.form-buttons button,
-.form-button button {
+:is(.form-buttons, .form-button) button {
   min-width: 140px;
   padding: 0.7rem 1.15rem;
   border: 1px solid var(--olive-accent);
@@ -638,24 +641,22 @@ footer p {
     background 160ms ease;
 }
 
-.form-buttons button:hover,
-.form-buttons button:focus-visible,
-.form-button button:hover,
-.form-button button:focus-visible {
+:is(.form-buttons, .form-button) button:hover,
+:is(.form-buttons, .form-button) button:focus-visible {
   background: linear-gradient(180deg, #7a8d53 0%, #647444 100%);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.22),
     0 4px 0 var(--button-shadow);
 }
 
-.form-buttons button:active,
-.form-button button:active {
+:is(.form-buttons, .form-button) button:active {
   transform: translateY(3px);
   box-shadow:
     inset 0 3px 8px rgba(0, 0, 0, 0.2),
     0 1px 0 var(--button-shadow);
 }
 
+/* Search results */
 .results-grid {
   display: grid;
   gap: 1rem;
@@ -695,13 +696,20 @@ footer p {
 }
 
 /* ==================== Styles Page ==================== */
-/* The styles page uses one panel system for the explainer copy and the comparison table. */
 
+/* Centers the overview panel and table wrapper within the page content */
+.styles-overview,
+.table-wrapper {
+  margin: 0 auto;
+}
+
+/* Intro panel */
 .styles-overview {
-  margin: 0 auto 1.5rem;
+  margin-bottom: 1.5rem;
   padding: 1.75rem 2rem;
 }
 
+/* Highlight list */
 .styles-highlight-list {
   margin: 0;
   padding-left: 1.4rem;
@@ -713,12 +721,13 @@ footer p {
   color: var(--olive-accent);
 }
 
+/* Table container */
 .table-wrapper {
-  margin: 0 auto;
   padding: 1.5rem;
   overflow-x: auto;
 }
 
+/* Base table */
 .pizza-styles-table {
   width: 100%;
   border-collapse: collapse;
@@ -748,9 +757,13 @@ footer p {
   vertical-align: top;
 }
 
-.pizza-styles-table thead th {
+.pizza-styles-table thead th,
+.pizza-styles-table--stacked tbody th {
   background: linear-gradient(180deg, #952c23 0%, var(--deep-brick) 100%);
   color: var(--parchment);
+}
+
+.pizza-styles-table thead th {
   font-family: var(--font-display);
   letter-spacing: 0.04em;
 }
@@ -775,6 +788,11 @@ footer p {
 }
 
 /* Makes the table stack into card-like rows on smaller screens. */
+
+.pizza-styles-table--stacked tbody th {
+    color: var(--parchment);
+}
+
 .pizza-styles-table--stacked {
   min-width: 0;
   border: 0;
@@ -807,11 +825,6 @@ footer p {
   border-bottom: 1px solid var(--border-color);
 }
 
-.pizza-styles-table--stacked tbody th {
-  background: linear-gradient(180deg, #952c23 0%, var(--deep-brick) 100%);
-  color: var(--parchment);
-}
-
 .pizza-styles-table--stacked td:last-child {
   border-bottom: 0;
 }
@@ -832,14 +845,14 @@ footer p {
 }
 
 /* ==================== History Page ==================== */
-/* The timeline keeps a simple single-column flow first, then alternates panels on larger screens. */
 
-/* Timeline Styling*/
+/* Timeline formatting*/
 .history-timeline {
   margin: 0 auto;
   padding: 1.25rem;
 }
 
+/* Intro quote */
 .history-quote {
   max-width: 760px;
   margin: 0 auto 3rem;
@@ -862,6 +875,7 @@ footer p {
   color: var(--olive-accent);
 }
 
+/* Timeline structure */
 .timeline-list {
   --timeline-gutter: 2.75rem;
   --timeline-marker-offset: 0.875rem;
@@ -898,10 +912,16 @@ footer p {
   content: none;
 }
 
-.timeline-content {
+.timeline-content,
+.timeline-image {
+  position: relative;
   width: 100%;
-  padding: 1.5rem;
   min-height: 0;
+}
+
+/* Timeline text content */
+.timeline-content {
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -920,11 +940,9 @@ footer p {
   letter-spacing: 0.08em;
 }
 
+/* Timeline image */
 .timeline-image {
-  position: relative;
-  width: 100%;
   aspect-ratio: 16 / 10;
-  min-height: 0;
   background-color: var(--olive-accent);
   overflow: visible;
   box-shadow: var(--panel-shadow-strong);
@@ -952,12 +970,12 @@ footer p {
   object-position: center;
 }
 
-.timeline-content h3 {
+.timeline-content h3,
+.timeline-location {
   margin: 0 0 16px;
 }
 
 .timeline-location {
-  margin: 0 0 16px;
   font-weight: 700;
   color: var(--olive-accent);
 }
@@ -967,16 +985,21 @@ footer p {
 }
 
 /* ==================== Submit Page ==================== */
-/* The submit page keeps the form layout narrow so the fields remain easy to scan and complete. */
 
 /* Form Styling */
+.recommendation-form-section,
+.form-button {
+  text-align: center;
+}
+
+/* Form container */
 .recommendation-form-section {
   max-width: 640px;
   margin: 0 auto;
   padding: 2rem 1.5rem;
-  text-align: center;
 }
 
+/* Form layout */
 .recommendation-form {
   text-align: left;
 }
@@ -996,6 +1019,7 @@ footer p {
   min-height: 120px;
 }
 
+/* Checkbox row */
 .checkbox-group {
   display: flex;
   align-items: flex-start;
@@ -1009,14 +1033,11 @@ footer p {
   accent-color: var(--olive-accent);
 }
 
-.form-button {
-  text-align: center;
-}
-
 .form-button button {
   min-width: 160px;
 }
 
+/* Screen-reader-only helper */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -1029,8 +1050,8 @@ footer p {
 }
 
 /* ==================== Lorem Page ==================== */
-/* The placeholder page borrows the same surfaces as the live content pages to stay visually consistent. */
 
+/* Inline text links */
 .lorem-page .page-content a {
   color: var(--olive-accent);
   font-weight: 700;
@@ -1044,10 +1065,22 @@ footer p {
 }
 
 .lorem-page .page-content ul,
-.lorem-page .page-content ol {
-  margin: 1.5rem auto 2rem;
-  padding: 1.5rem 1.5rem 1.5rem 3rem;
+.lorem-page .page-content ol,
+.lorem-page .page-content pre,
+.lorem-page .table-wrapper {
   max-width: 760px;
+}
+
+.lorem-page .page-content ul,
+.lorem-page .page-content ol,
+.lorem-page .page-content pre {
+  margin: 1.5rem auto 2rem;
+}
+
+/* Lists */
+.lorem-page .page-content ul,
+.lorem-page .page-content ol {
+  padding: 1.5rem 1.5rem 1.5rem 3rem;
 }
 
 .lorem-page .page-content ul li,
@@ -1076,9 +1109,8 @@ footer p {
   color: var(--deep-brick);
 }
 
+/* Code samples */
 .lorem-page .page-content pre {
-  max-width: 760px;
-  margin: 1.5rem auto 2rem;
   padding: 1.25rem 1.5rem;
   border: 1px solid var(--border-color);
   background: var(--dark-wood);
@@ -1093,6 +1125,7 @@ footer p {
   color: var(--parchment);
 }
 
+/* Image */
 .lorem-page .article-image {
   display: block;
   width: min(100%, 14rem);
@@ -1102,17 +1135,14 @@ footer p {
   background: var(--parchment);
 }
 
+/* Quote */
 .lorem-page .history-quote {
   margin: 2rem auto;
   text-align: center;
 }
 
-.lorem-page .history-quote cite {
-  color: var(--olive-accent);
-}
-
+/* Table */
 .lorem-page .table-wrapper {
-  max-width: 760px;
   margin: 2rem auto;
 }
 
@@ -1121,10 +1151,10 @@ footer p {
 }
 
 /* ==================== Media Queries ==================== */
-/* Layout changes only enhance upward from the mobile base so the smallest screens stay stable. */
 
 /* Small mobile layout */
 @media (max-width: 320px) {
+
   /* history timeline */
   .history-timeline {
     padding: 1.25rem 1rem;
@@ -1143,7 +1173,9 @@ footer p {
   }
 }
 
+/* Narrow mobile adjustments */
 @media (max-width: 413px) {
+
   /* history timeline*/
   .timeline-list::before,
   .timeline-image::before {
@@ -1165,8 +1197,11 @@ footer p {
   }
 }
 
+
 /* Tablet layout */
 @media (min-width: 768px) {
+
+  /* Header and nav layout */
   /* Nav Bar | Header */
   .site-header__inner {
     display: flex;
@@ -1208,6 +1243,12 @@ footer p {
     min-width: 0;
   }
 
+  /* Home page cards */
+  .guide-card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+  }
+
   /* history timeline */
   .history-timeline {
     padding: 1.75rem;
@@ -1219,7 +1260,12 @@ footer p {
   }
 
   /* Styles page */
-  /* Turns the stacked cards back into a table on tablets and larger screens. */
+  /* Turns the stacked cards back into a table on tablets and larger screens */
+
+  .pizza-styles-table--stacked tbody th {
+    color: var(--olive-accent);
+  }
+
   .pizza-styles-table--stacked {
     display: table;
     border: 1px solid var(--border-color);
@@ -1252,23 +1298,19 @@ footer p {
     content: none;
   }
 
-  /* Change: restore normal caption behavior once the table layout returns. */
+  /* Restores normal caption behavior once the table layout returns */
   .pizza-styles-table--stacked caption {
     display: table-caption;
   }
+
 }
+
 
 /* Desktop layout */
 @media (min-width: 1024px) {
   /* Prevents uneven nav grid layout between 1023-1086px */
   .site-header__inner {
     padding: 1rem 2rem;
-  }
-
-  /* home page grid */
-  .guide-card-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    align-items: stretch;
   }
 
   /* history timeline */
@@ -1316,8 +1358,6 @@ footer p {
 
   .timeline-image img {
     height: 350px;
-    object-fit: contain;
-    object-position: center;
   }
 
   /* odd rows: text left, image right */
@@ -1343,8 +1383,10 @@ footer p {
   }
 }
 
+
 /* Nav Bar on wide desktop layout */
 @media (min-width: 1100px) {
+
   /* Nav Bar | Header */
   .site-header.nav-ready .site-nav,
   .site-header.nav-ready.nav-open .site-nav,

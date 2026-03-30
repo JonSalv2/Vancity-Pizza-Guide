@@ -1,6 +1,6 @@
 /*
-A script that manages the pizza search interface by filtering the pizza-data.js dataset according to the selected style,
-renders matching locations as result cards, then resets the interface to display all styles when clicking the "Show All" button.
+A script that powers the pizza search interface by filtering the pizza-data.js array according to the selected style.
+It then renders matching locations as result cards, then resets the interface to display all styles when clicking the "Show All" button.
 It also generates Google Maps links for each location and updates the results message dynamically based on the current filter state.
 */
 
