@@ -43,7 +43,6 @@ img {
 }
 
 a {
-  color: var(--deep-brick);
   text-decoration: none;
 }
 
@@ -79,6 +78,26 @@ main {
 .page-content h3,
 .page-content h4 {
   line-height: 1.2;
+}
+
+/* Text link styling */
+.back-to-top {
+  margin: 1.5rem;
+  padding-top: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.text-link {
+  color: var(--olive-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.16em;
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+  color: var(--deep-brick);
 }
 
 /* Styling h2 elements except for the hero */
@@ -541,18 +560,6 @@ footer p {
 .site-description p {
   margin: 0;
   line-height: 1.7;
-}
-
-.site-description a {
-  color: var(--olive-accent);
-  font-weight: 700;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.16em;
-}
-
-.site-description a:hover,
-.site-description a:focus-visible {
-  color: var(--deep-brick);
 }
 
 
@@ -1059,19 +1066,6 @@ footer p {
 }
 
 /* ==================== Lorem Page ==================== */
-
-/* Inline text links */
-.lorem-page .page-content a {
-  color: var(--olive-accent);
-  font-weight: 700;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.16em;
-}
-
-.lorem-page .page-content a:hover,
-.lorem-page .page-content a:focus-visible {
-  color: var(--deep-brick);
-}
 
 .lorem-page .page-content ul,
 .lorem-page .page-content ol,
