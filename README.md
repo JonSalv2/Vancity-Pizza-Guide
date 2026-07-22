@@ -19,7 +19,9 @@ The site is designed mobile-first, with progressive enhancements at tablet and d
 - **Collapsible mobile navigation** driven by a small vanilla JS script.
 - **Reusable styling** in a single stylesheet, based on an earthy Italian-countryside colour palette.
 - **Comparison table** on the Styles page that reflows into stacked cards on small screens.
-- **Recommendation form** with native HTML5 validation on the Submit page.
+- **Recommendation form** with native HTML5 validation on the Submit page (front-end only — see note below).
+
+> **Note:** the Submit form is not wired up to a backend yet. It validates input in the browser but does not actually send or store submissions.
 
 ## Pages
 
@@ -68,6 +70,12 @@ final-project/
 ## Assignment context
 
 Built for **COMP 1850 — Introduction to Web Development** at BCIT. 
+
+## Acknowledgments
+
+- **ChatGPT** was used to help generate and manipulate some of the image assets used on the site.
+- **OpenAI Codex** was used to help scaffold the pizza dataset in `js/pizza-data.js` (see the comment at the top of that file for the exact prompt).
+- All HTML, CSS, and layout/design decisions are my own.
 
 ## Author
 
