@@ -1,18 +1,6 @@
-*
-!*/
-!.gitignore
-
-!*.html
-!*.css
-!*.js
-
-!*.png
-!*.jpg
-!*.jpeg
-!*.gif
-!*.webp
-!*.svg
-!*.avif
-!*.ico
-
+# macOS metadata
 .DS_Store
+
+
+
+
